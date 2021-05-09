@@ -21,7 +21,7 @@ class Product(models.Model):
     slug = models.SlugField(unique=True)
     image_of_product = models.ImageField(verbose_name="Image")
     description_of_product = models.TextField(verbose_name = "Description", null = True)
-    price_of_product = models.DecimalField(max_digits=10,decimal_places=2, verbose_name="Price")
+    price_of_product = models.DecimalField(max_digits=10,decimal_places=2, verbose_name="Pric111e")
 
     def __str__(self):
         return self.title
