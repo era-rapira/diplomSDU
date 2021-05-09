@@ -20,7 +20,7 @@ class Product(models.Model):
     title_of_product = models.CharField(max_length=225,verbose_name="Title")
     slug = models.SlugField(unique=True)
     image_of_product = models.ImageField(verbose_name="Image")
-    description_of_product = models.TextField(verbose_name = "Description", null = True)
+    description_of_product = models.TextField(verbose_name = "Descripwtion", null = True)
     price_of_product = models.DecimalField(max_digits=10,decimal_places=2, verbose_name="Pric111e")
 
     def __str__(self):
