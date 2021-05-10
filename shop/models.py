@@ -110,7 +110,7 @@ class Television(Product):
     screen_diagonal = models.CharField(max_length=12, verbose_name="screen_diagonal")
     screen_resolution = models.CharField(max_length=123, verbose_name="Resolution")
     smart_technology_support = models.CharField(max_length=20, verbose_name="Smart_technologies")
-    company_produces = models.CharField(max_length=25, verbose_name="Which_company_produce(Hp,lenovo e.t.c)", null=True)
+    company_produces = models.CharField(max_length=25, verbose_name="Which_company_produce(Apple, Hp,lenovo e.t.c)", null=True)
 
     def __str__(self):
         return self.category.name
