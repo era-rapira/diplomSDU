@@ -8,7 +8,7 @@ const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
     const classes = useStyles();
 
     const EmptyCart = () => (
-        <Typography variant="subtitle1">You have no items in your shopping cart, start adding some!
+        <Typography variant="subtitle1">You have no items in your shopping cart, 
             <Link to="/" className={classes.link}>start adding some!</Link>
         </Typography>
     );
@@ -26,7 +26,7 @@ const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
             <Typography variant="h4">Subtotal: {cart.subtotal.formatted_with_symbol}</Typography>
             <div>
                 <Button className={classes.emptyButton} size="large" type="button" variant="contained" color="seconadry" onClick={handleEmptyCart}>Empty Cart</Button>
-                <Button className={classes.checkoutButton} size="large" type="button" variant="contained" color="primary">Checkout</Button>
+                <Button component={Link} to="/checkout" className={classes.checkoutButton} size="large" type="button" variant="contained" color="primary">Checkout</Button>
             </div>
         </div>
         </>
