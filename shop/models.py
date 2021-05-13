@@ -4,23 +4,6 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 User = get_user_model()
 
-class LatestProductsManager:
-    @staticmethod
-
-    def get_products_for_models(*args, **kwargs):
-        products = []
-        content_models = ContentType.objects.filter(model__in=args)
-        for ct_model in content_models:
-            model_products = ct_model.model_class()._base_manager.all().order_by('-id')[:3]
-            products.extend(model_products)
-        return products
-
-class LatestProducts:
-    objects = LatestProductsManager()
-
-
-
-
 #Category
 
 class Category(models.Model):
@@ -32,14 +15,30 @@ class Category(models.Model):
 
 #Stuff
 class Product(models.Model):
-    class Meta:
-        abstract = True
     category = models.ForeignKey(Category, verbose_name="category", on_delete=models.CASCADE)
     title_of_product = models.CharField(max_length=225,verbose_name="Title",null=True)
     slug = models.SlugField(unique=True)
+    weight = models.CharField(max_length=89, verbose_name="Weight", null=True)
     image_of_product = models.ImageField(verbose_name="Image", null=True)
-    description_of_product = models.TextField(verbose_name = "Descripwtion", null = True)
-    price_of_product = models.DecimalField(max_digits=10,decimal_places=2, verbose_name="Price", null=True)
+    description_of_product = models.TextField(verbose_name = "Descripwtion",blank=True)
+    price_of_product = models.DecimalField(max_digits=10,decimal_places=2, verbose_name="Price", null=True,blank=True)
+    resolution = models.CharField(max_length=215, verbose_name="Resolution",blank=True)
+    accumulator_volume = models.CharField(max_length=235, verbose_name='Volume of acc',blank=True)
+    random_access_memory = models.CharField(max_length=255, verbose_name="RAM", blank=True)
+    videocard = models.CharField(max_length=255, verbose_name="Videocard", blank=True)
+    back_camera_mp = models.CharField(max_length=255,verbose_name='Back camera',blank=True)
+    front_camera_mp = models.CharField(max_length=255,verbose_name='Front camera',blank=True)
+    Product_create_company = models.CharField(max_length=12,
+                                              verbose_name='Which_company_produce(Hp,lenovo e.t.c)',
+                                              blank=True)
+
+    smart_technology_support = models.CharField(max_length=20, verbose_name="Smart_technologies",null=True,blank=True)
+
+
+    def __str__(self):
+        return self.title_of_product
+
+
 
 
 
@@ -78,39 +77,3 @@ class Customer(models.Model):
 
 
 
-
-
-def __str__(self):
-    return "Характеристики для товара {}".format(self.name)
-
-# Now my class Product is a abstract class, so for each type of product (Smartphones, laptops i will create separate class )
-class Laptop(Product):
-    resolution = models.CharField(max_length=255, verbose_name="Resolution", default='any')
-    processor = models.CharField(max_length=255, verbose_name="Core_model",null=True)
-    ram = models.CharField(max_length=12, verbose_name="RAM")
-    video = models.CharField(max_length=32, verbose_name="Videocard")
-    Product_create_company = models.CharField(max_length=12, verbose_name='Which_company_produce(Hp,lenovo e.t.c)', null=True)
-
-    def __str__(self):
-        return self.category.name
-
-class Smartphone(Product):
-    resolution = models.CharField(max_length=215, verbose_name="Resolution")
-    accumulator_volume = models.CharField(max_length=235, verbose_name='Volume of acc')
-    random_access_memory = models.CharField(max_length=255, verbose_name="RAM")
-    videocard = models.CharField(max_length=255, verbose_name="Videocard", null=True)
-    back_camera_mp = models.CharField(max_length=255,verbose_name='Back_camera')
-    front_camera_mp = models.CharField(max_length=255,verbose_name='Front_camera')
-    Product_create_company = models.CharField(max_length=12, verbose_name='Which_company_produce(Hp,lenovo e.t.c)', null=True)
-
-    def __str__(self):
-        return self.category.name
-
-class Television(Product):
-    screen_diagonal = models.CharField(max_length=12, verbose_name="screen_diagonal")
-    screen_resolution = models.CharField(max_length=123, verbose_name="Resolution")
-    smart_technology_support = models.CharField(max_length=20, verbose_name="Smart_technologies")
-    company_produces = models.CharField(max_length=25, verbose_name="Which_company_produce(Apple, Hp,lenovo e.t.c)", null=True)
-
-    def __str__(self):
-        return self.category.name

@@ -1,7 +1,8 @@
+from rest_framework.filters import SearchFilter
 from rest_framework.generics import ListAPIView
 
-from .serializers import Categor1Seriazer, TelephonesSerializer, ProductSerizer, LaptopSerializer, TelevisionSerializer
-from ..models import Category, Smartphone, Laptop, Television
+from .serializers import Categor1Seriazer,ProductSerizer
+from ..models import Category, Product
 
 
 class CategoryAPI(ListAPIView):
@@ -9,18 +10,14 @@ class CategoryAPI(ListAPIView):
     queryset = Category.objects.all()
 
 
-
-class TelephoneAPI(ListAPIView):
-    serializer_class = TelephonesSerializer
-    queryset = Smartphone.objects.all()
-
-
-class LaptopAPI(ListAPIView):
-    serializer_class = LaptopSerializer
-    queryset = Laptop.objects.all()
+class SmartphonesAPI(ListAPIView):
+    serializer_class = ProductSerizer
+    queryset = Product.objects.filter(category=1)
 
 
 
-class TelevisionAPI(ListAPIView):
-    serializer_class = TelevisionSerializer
-    queryset = Television.objects.all()
+class ProductListAPI(ListAPIView):
+    serializer_class = ProductSerizer
+    queryset = Product.objects.all()
+    filter_backends = [SearchFilter]
+    search_fields = ['price_of_product','title_of_product']
