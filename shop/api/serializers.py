@@ -7,6 +7,7 @@ class Categor1Seriazer(serializers.ModelSerializer):
     name = serializers.CharField(required=True)
     slug = serializers.SlugField()
 
+
     class Meta:
         model = Category
         fields = '__all__'
@@ -28,6 +29,8 @@ class ProductSerizer(serializers.ModelSerializer):
     back_camera_mp = serializers.CharField(required=False)
     front_camera_mp = serializers.CharField(required=False)
     Product_create_company = serializers.CharField(required=False)
+
+
     class Meta:
         model = Product
         fields = '__all__'

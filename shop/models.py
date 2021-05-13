@@ -8,7 +8,7 @@ User = get_user_model()
 
 class Category(models.Model):
     name = models.CharField(max_length=255, verbose_name='Name_of_category')
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=False)
 
     def __str__(self):
         return self.name
@@ -68,11 +68,11 @@ class BasketItems(models.Model):
 
 class Customer(models.Model):
     user = models.ForeignKey(User,verbose_name='User', on_delete=models.CASCADE)
-    phone = models.CharField(max_length=20, verbose_name='phone number')
-    address = models.CharField(max_length=255, verbose_name='Address')
+    phone = models.CharField(max_length=20, verbose_name='phone number', blank=True, null=True)
+    address = models.CharField(max_length=255, verbose_name='Address', blank=True, null=True)
 
     def __str__(self):
-        return "Покупатель: {} {}".format(self.user.first_name, self.user.last_name)
+        return "Customer: {} {}".format(self.user.first_name, self.user.last_name)
 
 
 

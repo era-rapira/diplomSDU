@@ -9,15 +9,26 @@ class CategoryAPI(ListAPIView):
     serializer_class = Categor1Seriazer
     queryset = Category.objects.all()
 
-
+#filter by smartphones
 class SmartphonesAPI(ListAPIView):
     serializer_class = ProductSerizer
+    queryset = Product.objects.filter(category=3)
+
+#filter by television
+class TelevisionAPI(ListAPIView):
+    serializer_class = ProductSerizer
     queryset = Product.objects.filter(category=1)
+
+#filter by Laptops
+class LaptopsAPI(ListAPIView):
+    serializer_class = ProductSerizer
+    queryset = Product.objects.filter(category=2)
 
 
 
 class ProductListAPI(ListAPIView):
     serializer_class = ProductSerizer
     queryset = Product.objects.all()
+    #поиск по цене и названию по
     filter_backends = [SearchFilter]
     search_fields = ['price_of_product','title_of_product']
