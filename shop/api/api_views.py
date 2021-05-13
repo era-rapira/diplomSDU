@@ -44,3 +44,6 @@ class ProductCreateUpdateDeleteAPI(RetrieveUpdateDestroyAPIView):
     serializer_class = ProductSerizer
     queryset = Product.objects.all()
 
+class ProductCreateAPI(ListCreateAPIView):
+    serializer_class = ProductSerizer
+    queryset = Product.objects.all()
