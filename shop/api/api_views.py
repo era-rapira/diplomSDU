@@ -1,5 +1,6 @@
 from rest_framework.filters import SearchFilter
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView
+
 
 from .serializers import Categor1Seriazer,ProductSerizer
 from ..models import Category, Product
@@ -32,3 +33,9 @@ class ProductListAPI(ListAPIView):
     #поиск по цене и названию по
     filter_backends = [SearchFilter]
     search_fields = ['price_of_product','title_of_product']
+
+#information about one object by id
+class ProductDetailAPI(RetrieveAPIView):
+    serializer_class = ProductSerizer
+    queryset = Product.objects.all()
+
