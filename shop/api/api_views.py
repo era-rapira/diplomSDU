@@ -1,5 +1,5 @@
 from rest_framework.filters import SearchFilter
-from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, ListCreateAPIView,RetrieveUpdateDestroyAPIView
 
 
 from .serializers import Categor1Seriazer,ProductSerizer
@@ -36,6 +36,11 @@ class ProductListAPI(ListAPIView):
 
 #information about one object by id
 class ProductDetailAPI(RetrieveAPIView):
+    serializer_class = ProductSerizer
+    queryset = Product.objects.all()
+
+#allowing to create or update or delete from product model stuff
+class ProductCreateUpdateDeleteAPI(RetrieveUpdateDestroyAPIView):
     serializer_class = ProductSerizer
     queryset = Product.objects.all()
 
