@@ -40,6 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
 ]
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'shop.backends.JWTAuthentication',
+    )
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -116,6 +121,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+#JWT
+JWT_SECRET_KEY="somerandomstrinh"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/

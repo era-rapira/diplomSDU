@@ -1,8 +1,10 @@
 from django.urls import path
-
-from .api_views import ProductListAPI,ProductDetailAPI,CategoryAPI,SmartphonesAPI,LaptopsAPI,TelevisionAPI,ProductCreateUpdateDeleteAPI,ProductCreateAPI
+from .api_views import ProductListAPI,ProductDetailAPI,CategoryAPI,\
+    SmartphonesAPI,LaptopsAPI,TelevisionAPI,\
+    ProductCreateUpdateDeleteAPI,ProductCreateAPI,RegisterAPI,LoginAPI
 
 urlpatterns = [
+
     path('products/', ProductListAPI.as_view(), name = 'products'),
     path('categories/', CategoryAPI.as_view(), name='categories'),
     path('smartphones/', SmartphonesAPI.as_view(), name='smartphones'),
@@ -13,5 +15,7 @@ urlpatterns = [
     path('productcrud/<str:pk>', ProductCreateUpdateDeleteAPI.as_view(), name='productcrud'),
     #че то хочешь создать то тебя сюда
     path('productcreate/', ProductCreateAPI.as_view(), name='product_create'),
-    #path('/', .as_view(), name=''),
+    path('register/', RegisterAPI.as_view(), name='register'),
+    path('login/',LoginAPI.as_view(), name='login'),
+
 ]
