@@ -19,36 +19,29 @@ const Footer = () => {
       <Container>
         <Row>
           <Column>
-            <Heading>Contact Us</Heading>
-            <FooterLink href="#">Uttar Pradesh</FooterLink>
-            <FooterLink href="#">Ahemdabad</FooterLink>
-            <FooterLink href="#">Indore</FooterLink>
-            <FooterLink href="#">Mumbai</FooterLink>
-          </Column>
-          <Column>
             <Heading>Social Media</Heading>
-            <FooterLink href="#">
+            <FooterLink href="https://www.facebook.com/">
               <i className="fab fa-facebook-f">
                 <span style={{ marginLeft: "10px" }}>
                   Facebook
                 </span>
               </i>
             </FooterLink>
-            <FooterLink href="#">
+            <FooterLink href="https://www.instagram.com/era_rapira/?hl=ru">
               <i className="fab fa-instagram">
                 <span style={{ marginLeft: "10px" }}>
                   Instagram
                 </span>
               </i>
             </FooterLink>
-            <FooterLink href="#">
+            <FooterLink href="https://twitter.com/?lang=ru">
               <i className="fab fa-twitter">
                 <span style={{ marginLeft: "10px" }}>
                   Twitter
                 </span>
               </i>
             </FooterLink>
-            <FooterLink href="#">
+            <FooterLink href="https://www.youtube.com/">
               <i className="fab fa-youtube">
                 <span style={{ marginLeft: "10px" }}>
                   Youtube

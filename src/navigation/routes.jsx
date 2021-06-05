@@ -78,7 +78,7 @@ function Routes() {
             <Navbar totalItems={cart.total_items} />
             <Switch>
                 <Route exact path="/">
-                    <Homepage/>
+                    <Homepage cart={cart} setCart={setCart} handleAddToCart={handleAddToCart}/>
                 </Route>
                 <Route exact path="/cart">
                     <Cart

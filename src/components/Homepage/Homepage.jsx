@@ -74,10 +74,9 @@ const styles = theme => ({
   });
 
 function Homepage(props) {
-    const { classes } = props;
+    const { classes, cart, setCart, handleAddToCart } = props;
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
-    const [cart, setCart] = useState({});
     const [order, setOrder] = useState({});
     const [errorMessage, setErrorMessage] = useState('');
     const [activeItemIndex, setActiveItemIndex] = useState(0);
@@ -91,23 +90,20 @@ function Homepage(props) {
     }
 
     const fetchProductsByQuery = async (query) => {
-        const { data } = await commerce.products.list({
+        if (query.length == 0) {
+          setFilteredProducts([]);
+        } else {
+          const { data } = await commerce.products.list({
             query: `${query}`
         });
 
         setFilteredProducts(data ?? []);
+        }
     }
 
     const fetchCart = async () => {
         setCart(await commerce.cart.retrieve())
     }
-
-    const handleAddToCart = async (productId, quantity) => {
-        const { cart } = await commerce.cart.add(productId, quantity);
-
-        setCart(cart);
-    }
-  
 
     useEffect(() => {
         fetchProducts();
