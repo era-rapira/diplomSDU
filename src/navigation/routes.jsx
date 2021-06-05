@@ -3,6 +3,9 @@ import { commerce } from '../lib/commerce';
 import { Products, Navbar, Cart, Checkout } from '../components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Homepage from '../components/Homepage/Homepage';
+import LoginPage from '../components/Auth/LoginPage';
+import RegistrationPage from '../components/Auth/RegistrationPage';
+import ProductPage from '../components/ProductPage/ProductPage';
 
 function Routes() {
 
@@ -94,6 +97,21 @@ function Routes() {
                         error={errorMessage}
                     />
                 </Route>
+                <Route exact path="/product">
+                    <Checkout 
+                        cart={cart}
+                        order={order}
+                        onCaptureCheckout={handleCaptureCheckout}
+                        error={errorMessage}
+                    />
+                </Route>
+                <Route exact path="/login">
+                    <LoginPage />
+                </Route>
+                <Route exact path="/register">
+                    <RegistrationPage />
+                </Route>
+                <Route path="/product/:productId" children={<ProductPage />} />
             </Switch>
         </div>
         </Router>
