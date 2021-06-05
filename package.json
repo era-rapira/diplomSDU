@@ -13,9 +13,12 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "mobx": "^6.3.2",
+    "mobx-react": "^7.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.11.5",
+    "react-items-carousel": "^2.8.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
@@ -24,7 +27,7 @@
     "semantic-ui-react": "^2.0.1"
   },
   "scripts": {
-    "start": "react-scripts start host 192.168.0.17",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
